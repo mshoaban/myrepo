@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\File;
 
 
+
 class ProductController extends Controller
 {
     /**
@@ -17,6 +18,8 @@ class ProductController extends Controller
         $products = Product::all();
         return view('products.index' , compact('products'));
     }
+
+  
 
     /**
      * Show the form for creating a new resource.

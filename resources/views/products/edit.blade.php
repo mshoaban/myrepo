@@ -13,7 +13,7 @@
 		<div class="container">
 			<div class="card mt-4">
 	
-			<div class="card-header"><h3>Edit Product</h3> <a href="{{ route('product.index') }}" class="btn btn-success float-right ">Details</a></div>
+			<div class="card-header"><h3>Edit Product</h3> <a href="{{ route('product.index') }}" class="btn btn-success float-right ">Go Back</a></div>
 			<div class="card-body">
 		<form  method="post" action="{{route('product.update', $product->id)}}"  enctype="multipart/form-data">
          	@csrf
