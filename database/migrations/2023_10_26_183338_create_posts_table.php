@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('content');
             $table->unsignedBigInteger('user_id');
+            $table->boolean('publish')->default(0);
             $table->timestamps();
 
             // Define foreign key relationship with the 'users' table

@@ -18,26 +18,31 @@ class PostsTableSeeder extends Seeder
                 'title' => 'First Post',
                 'content' => 'This is the content of the first post.',
                 'user_id' => 1, // Replace with the user ID of the post's author
+                'publish' => 1,
             ],
             [
                 'title' => 'Second Post',
                 'content' => 'This is the content of the second post.',
                 'user_id' => 2, // Replace with the user ID of the post's author
+                'publish' => 0,
             ],
             [
                 'title' => 'Third Post',
                 'content' => 'This is the content of the third post.',
                 'user_id' => 1, // Replace with the user ID of the post's author
+                'publish' => 1,
             ],
             [
                 'title' => 'Fourth Post',
                 'content' => 'This is the content of the fourth post.',
                 'user_id' => 2, // Replace with the user ID of the post's author
+                'publish' => 1,
             ],
             [
                 'title' => 'Fifth Post',
                 'content' => 'This is the content of the fifth post.',
                 'user_id' => 2, // Replace with the user ID of the post's author
+                'publish' => 0,
             ],
         ];
 

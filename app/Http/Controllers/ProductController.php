@@ -47,7 +47,7 @@ class ProductController extends Controller
        }
        $product->save();
 
-       return redirect('/')->with('status', 'Product added successfully');
+       return redirect('/products')->with('status', 'Product added successfully');
     }
 
     
@@ -87,7 +87,7 @@ class ProductController extends Controller
             $product->image = $filename;
         }
         $product->update();
-        return redirect('/')->with('status' , 'product  Updated Successfuly !!!');
+        return redirect('/products')->with('status' , 'product  Updated Successfuly !!!');
 
     }
 
@@ -104,6 +104,6 @@ class ProductController extends Controller
             File::delete($destination);
         }
         $product->delete();
-        return redirect('/')->with('status' , 'product  Deleted Successfuly !!!');
+        return redirect('/products')->with('status' , 'product  Deleted Successfuly !!!');
     }
 }
