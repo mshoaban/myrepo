@@ -16,21 +16,14 @@ class Comment extends Model
         'post_id'
     ];
 
-      /**
-     * Get the user who wrote the comment.
-     *
-     * @return BelongsTo
-     */
+    // To obtain commenting user
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * Get the post to which the comment belongs.
-     *
-     * @return BelongsTo
-     */
+   // To obtain post where comment is commented
+    
     public function post()
     {
         return $this->belongsTo(Post::class);
