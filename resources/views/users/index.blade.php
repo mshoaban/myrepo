@@ -4,10 +4,11 @@
 @endsection
 
 @section('content')
-<div class="card">
-	<div class="card-header">All Users
-		<a href="{{route('post.index')}}" class="btn btn-info float-right">Go Back</a></div>
-		<a href="{{route('users.create')}}" class="btn btn-info float-right mt-2">Add User</a></div>
+<div class="container">
+<div class="card mt-3">
+	<div class="card-header"><h3>All Users</h3>
+		</div>
+		
 	@if(session('status'))
 	<div class="alert alert-success">
 		{{session('status')}}
@@ -60,5 +61,6 @@
 			</tbody>
 		</table>
 	</div>
+</div>
 </div>
 @endsection

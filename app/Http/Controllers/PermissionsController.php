@@ -3,62 +3,46 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use App\Models\User;
 
 class PermissionsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $permissions = Permission::all();
+        return view('permissions.index', compact('permissions'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('permissions.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:permissions',
+        ]);
+
+        Permission::create(['name' => $request->name]);
+
+        return redirect('/permissions')->with('status', 'Permission created successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function destroy(Permission $permission)
     {
-        //
-    }
+        $permission->delete();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        // Detach the permission from all users
+        User::whereHas('permissions', function ($query) use ($permission) {
+            $query->where('id', $permission->id);
+        })->get()->each(function ($user) use ($permission) {
+            $user->permissions()->detach($permission->id);
+        });
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect('/permissions')->with('status', 'Permission deleted successfully');
     }
 }
+

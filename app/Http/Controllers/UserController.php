@@ -105,11 +105,19 @@ class UserController extends Controller
         $role = $request->input('role');
         if($role == 2){
             $role = 'admin';
-            $user->assignRole($role);
+            $user->syncRoles($role);
         }else{
             $role = 'default';
-            $user->assignRole($role);
+            $user->syncRoles($role);
         }
+
+         // Update the user's role
+    // $newRole = $request->input('role');
+    
+    // // Detach the old roles and assign the new one
+    // $user->syncRoles([$newRole]);
+
+    
         // Update the user's permissions
         $permissions = $request->input('permissions', []);
         $user->syncPermissions($permissions);

@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use App\Http\Requests\RoleFormRequest;
+
 
 class RoleController extends Controller
 {
@@ -11,7 +16,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Role::all();
+        return view('roles.index', compact('roles'));
     }
 
     /**
@@ -19,15 +25,21 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('roles.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RoleFormRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $role = new Role;
+        $role->name = $data['name'];
+        $role->save();
+
+        return redirect('/roles')->with('status', 'Role added successfully !!!');
     }
 
     /**
@@ -35,7 +47,8 @@ class RoleController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $role = Role::find($id);
+        return view('roles.view', compact('role'));
     }
 
     /**
@@ -43,7 +56,8 @@ class RoleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $role = Role::find($id);
+        return view('roles.view', compact('role'));
     }
 
     /**
@@ -51,7 +65,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
     }
 
     /**
@@ -59,6 +73,20 @@ class RoleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $role = Role::find($id);
+
+        // Check if the role exists
+        if (!$role) {
+            return redirect('/roles')->with('error', 'Role not found!');
+        }
+
+        // Detach the role from users
+        $usersWithRole = $role->users;
+        $role->users()->detach();
+
+        // You can also delete the role after detaching it from users, if needed
+        $role->delete();
+
+        return redirect('/roles')->with('status', 'Role Deleted successfully !!!');
     }
 }

@@ -4,9 +4,11 @@
 @endsection
 
 @section('content')
+<div class="container mt-3">
+	<h2>Profile Feed</h2>
 <div class="card">
 	<div class="card-header">
-		{{$user->name}}
+		<strong>{{$user->name}}</strong>
 	</div>
 	<div class="card-body mt-2 bg-light">
 		@forelse($posts as $post)
@@ -23,10 +25,18 @@
                 </li>
                 @endforeach
             </ul>
+             <form action="{{route('comment.store')}}" method="POST">
+                    @csrf
+                <input type="hidden" name="post_id" value="{{$post->id}}">
+                <input type="text" name="comment"  placeholder="Add Your Opinion " class="form-control mt-2">
+                <button type="submit" class="btn btn-primary mt-2 float-right">Add Comment </button>
+
+             </form>
         </div>
 		@empty
 		No Data available 
 		@endforelse
 	</div>
+</div>
 </div>
 @endsection

@@ -4,16 +4,15 @@
 @endsection
 
 @section('content')
-<div class="card">
-	<div class="card-header">All Posts
-		<a href="{{route('post.index')}}" class="btn btn-info float-right">Go Back</a></div>
+<div class="container mt-3">
+	<h2>Posts Management</h2>
 	@if(session('status'))
 	<div class="alert alert-success">
 		{{session('status')}}
 	</div>
 	@endif
-	<div class="card-body">
-		<table class="table table-bordered">
+	
+		<table class="table table-bordered mt-4">
 			<thead>
 				<tr>
 					<th>Sr </th>
@@ -58,5 +57,4 @@
 			</tbody>
 		</table>
 	</div>
-</div>
 @endsection

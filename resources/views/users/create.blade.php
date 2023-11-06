@@ -3,10 +3,10 @@
 Create User 
 @endsection
 @section('content')
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register user') }}</div>
+<div class="container">
+    
+            <div class="card mt-3">
+                <div class="card-header"><h3>{{ __('Register user') }}</h3></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('users.store') }}">
@@ -96,7 +96,5 @@ Create User
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
 </div>
 @endsection

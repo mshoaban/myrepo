@@ -4,10 +4,10 @@
 @endsection
 
 @section('content')
-<div class="card">
+<div class="container">
+	<div class="card mt-2">
 	<div class="card-header">
 		<h3>Add Data For Post </h3>
-		<a href="{{route('post.index')}}" class="btn btn-info float-right">Go Back</a></div>
 	</div>
 	<div class="card-body">
 		<form action="{{route('post.store')}}" method="POST">
@@ -19,5 +19,6 @@
 			<button type="submit" class="btn btn-success mt-2">Save</button>
 		</form>
 	</div>
+</div>
 </div>
 @endsection

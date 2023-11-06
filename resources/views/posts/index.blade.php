@@ -4,7 +4,9 @@
 @endsection
 
 @section('content')
-    @can('manage users')
+<div class="container mt-3">
+<h2>Posts Feed </h2>
+{{--     @can('manage users')
     <a href="{{route('users.index')}}" class="btn btn-primary w-100 mt-2">Users</a>
     <a href="{{route('post.pending')}}" class="btn btn-primary w-100 mt-2">Pending Posts </a>
     @endcan
@@ -17,9 +19,9 @@
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
-                                    </form>
+                                    </form> --}}
     @foreach($posts as $post)
-    <div class="card my-3">
+    <div class="card">
         <div class="card-header">
             <a href="{{route('post.userprofile', $post->user->id)}}"><strong>{{ $post->user->name }}</strong></a> <!-- Display post writer's name -->
         </div>
@@ -48,6 +50,6 @@
         </div>
     </div>
     @endforeach
-
+    </div>
 @endsection
 
