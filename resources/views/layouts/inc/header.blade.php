@@ -9,7 +9,21 @@
         <title>@yield('title')</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+        <link href="{{ asset('vendor/sweet-alert/sweetalert.css') }}" rel="stylesheet">
+        <link rel="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" >
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+       @if(session('alert'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success Title',
+            text: 'Your Payment was successful',
+        });
+    </script>
+    @endif
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">

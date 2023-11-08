@@ -38,6 +38,7 @@ class ProductController extends Controller
 
         $product->name = $request['name'];
         $product->description = $request['description'];
+        $product->price = $request['price'];
 
         if($request->hasfile('image')){
         $file = $request->file('image');
@@ -74,6 +75,8 @@ class ProductController extends Controller
 
         $product->name = $request['name'];
         $product->description = $request['description'];
+        $product->price = $request['price'];
+        
 
         if($request->hasfile('image')){
             $destination = 'uploads/products/'.$product->image;

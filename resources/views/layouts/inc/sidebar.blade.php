@@ -14,6 +14,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                                 Add Post
                             </a>
+                            <a class="nav-link @if(Route::currentRouteName() == 'product.index') active @endif" href="{{route('product.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-star"></i></div>
+                                Shopping
+                            </a>
                             @endrole
                             @can('manage users')
                             <div class="sb-sidenav-menu-heading">Interface</div>

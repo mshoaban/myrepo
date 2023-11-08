@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
     Route::get('/', function () {
-        return view('welcome');
+        return view('auth.login');
     });
 
      Route::get('/helo', function () {
@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 
      // Dashboard Controller 
      Route::get('/dashboard', [App\Http\Controllers\DashBoardController::class, 'index'])->name('dashboard');
+
+     Route::get('/checkout', [App\Http\Controllers\StripeController::class, 'checkout'])->middleware('auth')->name('checkout');
+     Route::get('/success', [App\Http\Controllers\StripeController::class, 'success'])->middleware('auth')->name('success');
+     Route::post('/session', [App\Http\Controllers\StripeController::class, 'session'])->middleware('auth')->name('session');
+
 
      //Users Routes 
 Route::middleware(['role_or_permission:manage users|manage posts'])->group(function () {

@@ -20,6 +20,10 @@
 				<textarea type="text" class="form-control" name="description"  placeholder="Product Description"></textarea>
 			</fieldset>
 			<fieldset class="form-group">
+				<label for="formGroupExampleInput2">Price </label>
+				<input type="number" min="100" class="form-control" name="price"  placeholder="Product Price"></input>
+			</fieldset>
+			<fieldset class="form-group">
 				<label for="formGroupExampleInput"> Product Image :</label><br>
 				<input type="file" class="form-group" name="image" id="formGroupExampleInput" placeholder="Product image">
 			</fieldset>

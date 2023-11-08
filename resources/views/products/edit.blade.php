@@ -21,6 +21,10 @@
 				<textarea type="text" class="form-control" name="description" placeholder="Product Description">{{$product->description}}</textarea>
 			</fieldset>
 			<fieldset class="form-group">
+				<label for="formGroupExampleInput2">Price </label>
+				<input type="number" min="100" value="{{$product->price}}" class="form-control" name="price"  placeholder="Product Price"></input>
+			</fieldset>
+			<fieldset class="form-group">
 				<label for="formGroupExampleInput"> Product Image :</label><br>
 				<input type="file" class="form-group" value="{{$product->image}}" name="image" id="formGroupExampleInput" placeholder="Product image"><img src="{{asset('uploads/products/'.$product->image)}}" style="width:80px;height: 50px;" alt="">
 			</fieldset>
